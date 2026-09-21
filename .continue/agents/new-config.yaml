@@ -1,0 +1,11 @@
+{
+  "models": [
+    {
+      "title": "DeepSeek Free",
+      "provider": "openai",
+      "model": "deepseek/deepseek-chat-v3-0324:free",
+      "apiBase": "https://openrouter.ai/api/v1",
+      "apiKey": "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"
+    }
+  ]
+}
