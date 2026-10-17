@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: modelName });
 
-      const systemPrompt = "You are a professional fitness and nutrition coach. Respond clearly, concisely, and encouragingly in English.";
+      const systemPrompt = "You are a professional fitness and nutrition coach. CRITICAL RULE: You MUST reply 100% in English ONLY, even if the user's question is written in Japanese or another language. Respond clearly, concisely, and encouragingly.";
       const fullPrompt = `${systemPrompt}\n\nQuestion: ${prompt}`;
 
       const result = await model.generateContent(fullPrompt);
