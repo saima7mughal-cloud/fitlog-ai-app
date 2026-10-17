@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 // --- Google AI SDK の初期化 (AQ.キー対応) ---
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
 app.post("/api/gemini", async (req, res) => {
   const { prompt } = req.body || {};

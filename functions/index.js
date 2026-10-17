@@ -18,7 +18,7 @@ exports.gemini = functions.https.onRequest((req, res) => {
 
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
       const systemPrompt = "あなたはプロの筋トレコーチです。ユーザーの質問に短く的確に答えてください。";
       const fullPrompt = `${systemPrompt}\n\n質問: ${prompt}`;
