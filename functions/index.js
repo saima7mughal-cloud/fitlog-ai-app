@@ -13,15 +13,15 @@ exports.gemini = functions.https.onRequest((req, res) => {
     const { prompt } = req.body || {};
 
     if (!apiKey) {
-      return res.status(500).json({ error: "APIキーが設定されていません。" });
+      return res.status(500).json({ error: "API key is not configured." });
     }
 
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
-      const systemPrompt = "あなたはプロの筋トレコーチです。ユーザーの質問に短く的確に答えてください。";
-      const fullPrompt = `${systemPrompt}\n\n質問: ${prompt}`;
+      const systemPrompt = "You are a professional fitness and nutrition coach. Respond clearly, concisely, and encouragingly in English.";
+      const fullPrompt = `${systemPrompt}\n\nQuestion: ${prompt}`;
 
       const result = await model.generateContent(fullPrompt);
       const response = await result.response;
@@ -30,7 +30,7 @@ exports.gemini = functions.https.onRequest((req, res) => {
       res.status(200).json({ output: text });
     } catch (error) {
       console.error("Firebase AI Error:", error.message);
-      res.status(500).json({ error: "AI通信エラー", details: error.message });
+      res.status(500).json({ error: "AI communication error", details: error.message });
     }
   });
 });

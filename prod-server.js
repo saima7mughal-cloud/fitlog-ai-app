@@ -33,31 +33,29 @@ app.post("/api/gemini", async (req, res) => {
   const { prompt } = req.body || {};
 
   if (!apiKey) {
-    return res.status(500).json({ error: "APIキーが設定されていません。" });
+    return res.status(500).json({ error: "API key is not configured." });
   }
 
   try {
-    const systemPrompt = "あなたはプロの筋トレコーチです。ユーザーの質問に短く的確に答えてください。";
-    const fullPrompt = `${systemPrompt}\n\n質問: ${prompt}`;
+    const systemPrompt = "You are a professional fitness and nutrition coach. Respond clearly, concisely, and encouragingly in English.";
+    const fullPrompt = `${systemPrompt}\n\nQuestion: ${prompt}`;
 
-    console.log("📡 SDKを使ってGeminiに通信中...");
+    console.log("📡 Communicating with Gemini via SDK...");
 
-    // 公式SDKを使った通信 (これが最もAQ.キーに強い方法です)
     const result = await model.generateContent(fullPrompt);
     const response = await result.response;
     const text = response.text();
 
-    console.log("✅ AIからの回答取得に成功しました！");
+    console.log("✅ Successfully received response from AI!");
     res.json({ output: text });
   } catch (error) {
     console.error("❌ SDK Error:", error.message);
 
-    // エラー内容に応じたメッセージ
-    let userError = "AIとの通信に失敗しました。";
+    let userError = "Failed to communicate with AI.";
     if (error.message.includes("API_KEY_INVALID")) {
-      userError = "APIキーが無効です。設定を見直してください。";
+      userError = "Invalid API key. Please check your configuration.";
     } else if (error.message.includes("404")) {
-      userError = "AIモデルが見つかりません。";
+      userError = "AI model not found.";
     }
 
     res.status(500).json({ error: userError, details: error.message });

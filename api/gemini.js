@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   const { prompt } = req.body || {};
 
   if (!apiKey) {
-    return res.status(500).json({ error: "APIキーがクラウド側に設定されていません。" });
+    return res.status(500).json({ error: "API key is not configured on the server." });
   }
 
   for (const modelName of GEMINI_MODEL_CANDIDATES) {
@@ -32,8 +32,8 @@ export default async function handler(req, res) {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: modelName });
 
-      const systemPrompt = "あなたはプロの筋トレコーチです。ユーザーの質問に短く的確に答えてください。";
-      const fullPrompt = `${systemPrompt}\n\n質問: ${prompt}`;
+      const systemPrompt = "You are a professional fitness and nutrition coach. Respond clearly, concisely, and encouragingly in English.";
+      const fullPrompt = `${systemPrompt}\n\nQuestion: ${prompt}`;
 
       const result = await model.generateContent(fullPrompt);
       const response = await result.response;
@@ -45,13 +45,13 @@ export default async function handler(req, res) {
       }
     } catch (error) {
       console.warn(`❌ Failed with ${modelName}:`, error.message);
-      // 次のモデルを試す
+      // Try next model
     }
   }
 
-  // すべて失敗した場合
+  // If all models fail
   res.status(500).json({
-    error: "AIとの通信にすべて失敗しました。",
-    details: "Google Cloud Consoleで 'Generative Language API' が有効であることを確認してください。"
+    error: "Failed to communicate with AI.",
+    details: "Please ensure the 'Generative Language API' is enabled in Google Cloud Console."
   });
 }
