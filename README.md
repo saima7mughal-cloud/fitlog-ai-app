@@ -1,4 +1,64 @@
 FitLog AI 🏋️‍♂️📊
+A Next-Gen Fitness Dashboard: AI-Powered Body Analysis, Training & Nutrition Guide
+
+A web application that centralizes your daily workout logs and body composition data (weight, body fat percentage, muscle mass, etc.) across mobile and PC. The AI analyzes your "current condition" to recommend the optimal training menu and nutritional balance.
+
+✨ Core Features
+📸 Automated Data Extraction from Images & PDFs (OCR / AI Analysis)
+Simply upload your InBody scan sheet, smart scale app screenshot, or health checkup results. The AI automatically reads and inputs the numbers, completely eliminating the hassle of manual data entry.
+
+📝 Stress-Free Manual Input
+Supports over 13 metrics including height, weight, BMI, body fat, and skeletal muscle mass—but with "zero required fields." You can quickly log only what you measured that day. It is designed specifically to make daily tracking easy and sustainable.
+
+🤖 AI Personal Analysis & Recommendations
+The AI analyzes your current condition based on your inputted data. It automatically calculates and suggests tailored training plans, target calories (for weight loss, maintenance, or bulking), and recommended protein intake based on your goals. Even when you first start and have limited data, it provides appropriate advice using estimated values.
+
+📈 Progress Graphs & History Management
+Past measurement data is visualized in lists and graphs for quick reading. You can understand your long-term body changes at a single glance.
+
+🛠️ Development Process & Focus Points
+I built this app as a personal project over roughly two months, balancing the planning and implementation between my school assignments and exams as a 2nd-year high school student studying Information Technology.
+
+[ Tech Stack ]
+
+Frontend / Backend: React, Vite, Firebase
+
+Mobile Support: Capacitor, Android Studio (for testing)
+
+AI Integration: Google Gemini API, VS Code AI coding assistance
+
+[ Key Focus Areas ]
+
+A Hybrid of "Core Understanding" and "AI Utilization"
+Instead of leaving everything to code-generation AI from the start, I first wrote the base code myself to fully understand the underlying mechanics. Once that foundation was set, introducing AI tools drastically accelerated my development speed and the overall quality of the features.
+
+UI/UX Built for Daily Use by Gym Goers
+Since I work out myself, my top priority was "making sure daily logging doesn't become a chore." By making all input fields optional and adding an image upload feature, I lowered the barrier to entry as much as possible.
+
+🔥 Struggles & Overcoming Challenges
+The hardest part of this development was implementing the AI function that analyzes and proposes based on measurement data.
+
+I hit a wall where errors kept popping up during data passing and API integration, and the AI just wouldn't work as intended for a while.
+To solve this, I went back and forth between VS Code and Android Studio to isolate the causes, and utilized an AI agent tool to get a bird's-eye view of the entire project structure to separate the errors. By giving precise instructions via prompts and crushing bugs one by one, I finally succeeded in getting the AI features running perfectly.
+
+🚀 Future Updates
+Improve the UI based on feedback from actual gym-goers and fitness enthusiasts.
+
+Add meal logging and automated scheduling for targeted muscle group training.
+
+Further optimization for seamless performance as a native Android/iOS app.
+
+👤 About the Developer
+Profile: 2nd-Year High School Student (Information Technology Dept. at a Technical High School)
+
+Development Period: Approx. 2 months (Developed alongside schoolwork and other activities)
+
+
+
+
+
+（日本語）
+FitLog AI 🏋️‍♂️📊
 AIがあなたの体を分析してトレーニングと栄養を提案する、次世代フィットネスダッシュボード
 
 日々のトレーニング記録や体組成データ（体重・体脂肪率・筋肉量など）をスマホやPCで一元管理し、AIが「今の状態」を分析して最適なトレーニングメニューや栄養バランスを提案してくれるWebアプリです。
